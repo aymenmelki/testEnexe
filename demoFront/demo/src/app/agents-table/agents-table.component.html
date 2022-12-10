@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <button mat-button type="submit" class="buttonl" (click)="addAgent()" >Add Agent</button>
+    </div>
+  </div>
+  <div class="row">
+<div class="col-md-12">
+<ng-container *ngIf="agents$ | async as data">
+<p-table [paginator]="true" [rows]="5"
+         [rowsPerPageOptions]="[5,10,15,20]"  [value]="data"
+         responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Numéro Identifiant</th>
+      <th>Nom et prénom</th>
+      <th>Courrier electronique</th>
+      <th >Vérification email</th>
+      <th>Roles</th>
+      <th >Status</th>
+      <th >Date de naissance</th>
+      <th>Dérniere Conexion</th>
+      <th ></th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-agent>
+    <tr>
+
+      <td>{{agent.userId}}</td>
+      <td>{{agent.fullname}}  </td>
+      <td>{{agent.email}}</td>
+      <td >Vérification email</td>
+      <td><span *ngFor="let role of agent.roles">{{role}}</span></td>
+      <td >{{agent.active ? 'Active' : 'Not Active'}}</td>
+      <td>{{agent.dateOfBirth | date :'dd//MM/yyyy'}}</td>
+      <td >{{agent.lastLogin | date :'dd//MM/yyyy hh:mm:ss'}}</td>
+      <td>
+
+        <button (click)="DeleteAgent(agent)">Delete</button>
+        <button (click)="updateAgent(agent)">Update</button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td class="border-0">
+   No records found
+   No records found
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+</ng-container>
+ </div>
+  </div>
+</div>

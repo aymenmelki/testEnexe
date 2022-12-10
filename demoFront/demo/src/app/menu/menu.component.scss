@@ -1,0 +1,90 @@
+::ng-deep .p-menubar {
+  min-height: 40px;
+  background: #c92830;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  .cursor-pointer{
+    &:hover{
+      cursor:pointer;
+    }
+  }
+  @media only screen and (max-width: 960px) {
+    .p-menubar-button{
+      color:#fff !important;
+      position: absolute;
+      right: 15px;
+      &:hover {
+        background: transparent !important;
+      }
+      &:focus{
+        box-shadow: none !important;
+      }
+    }
+  }
+  @media only screen and (min-width: 961px) {
+
+    .p-menuitem {
+      &.d-right{
+        position: absolute;
+        right: 0;
+        &.active{
+          .p-menuitem-link {
+            background: transparent!important;
+            &.active span {
+              color: #ffffff !important;
+            }
+            &:hover{
+              background: transparent!important;
+            }
+
+          }
+        }
+      }
+      &.p-menuitem-active > .p-menuitem-link{
+        background: transparent !important;
+        box-shadow: none !important;
+
+      }
+      .p-menuitem-link {
+        font-size: 14px !important;
+        &.active {
+          background: #ffffff !important;
+          &:hover{
+            background: #ffffff !important;
+          }
+          span {
+            color: #495057 !important;
+          }
+        }
+        &:hover {
+          background: transparent !important;
+        }
+        &:focus{
+          box-shadow: none !important;
+        }
+        span {
+          color: #fff !important;
+        }
+      }
+      p-menubarsub{
+        .p-menuitem-link {
+          padding: 0.75rem 1.25rem !important;
+          &:hover {
+            background: transparent !important;
+          }
+          &:focus{
+            box-shadow: none !important;
+          }
+          span {
+            color: #495057 !important;
+          }
+        }
+      }
+    }
+  }
+  &.p-component {
+    border: none;
+    border-radius: 0;
+  }}

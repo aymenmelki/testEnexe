@@ -1,0 +1,85 @@
+
+<h1 mat-dialog-title >Add A New Agent</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <mat-form-field class="form-element">
+      <mat-label>User Name</mat-label>
+      <input matInput  formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <mat-label>Full Name</mat-label>
+      <input matInput  formControlName="fullname">
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let gender of ['Male','Female','Other','Not Discolsed']" [value]="gender">{{gender}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <mat-label>Email</mat-label>
+      <input matInput type="email"  formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" ></mat-datepicker>
+    </mat-form-field>
+    <div class="row">
+      <form formGroupName="userAddress">
+      <mat-form-field class="form-element">
+        <mat-label>Country</mat-label>
+        <input matInput  formControlName="country">
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <mat-label>State</mat-label>
+        <input matInput  formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Address Line</mat-label>
+        <input matInput  formControlName="addressLine">
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <mat-label>Zip Code</mat-label>
+        <input matInput  formControlName="zipCode">
+      </mat-form-field>
+      </form>
+    </div>
+
+
+    <div class="row">
+      <form formGroupName="userContact">
+      <mat-form-field class="form-element">
+        <mat-label>Phone Prefix</mat-label>
+        <input matInput  formGroupName="phonePrefix">
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <mat-label>Phone Number</mat-label>
+        <input matInput  formControlName="phoneNumber">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Land Line Prefix</mat-label>
+        <input matInput  formControlName="landlinePr">
+      </mat-form-field>
+
+
+      <mat-form-field class="form-element">
+        <mat-label>Land Line Number</mat-label>
+        <input matInput  formControlName="landlineNumber">
+      </mat-form-field>
+      </form>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+  <button mat-button  (click)="save()"   cdkFocusInitial>Update Agent</button>
+</div>
